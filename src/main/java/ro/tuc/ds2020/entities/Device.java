@@ -1,26 +1,13 @@
 package ro.tuc.ds2020.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.validation.constraints.Email;
 import java.io.Serializable;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name = "devices")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 
 public class Device  implements Serializable{
 
@@ -56,6 +43,64 @@ public class Device  implements Serializable{
         this.maximumEnergyConsumption = maximumEnergyConsumption;
         this.user = user;
     }
+    public Device(){
 
+    }
 
+    public Device(UUID id, String name, String description, String address, int maximumEnergyConsumption, User user) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.address = address;
+        this.maximumEnergyConsumption = maximumEnergyConsumption;
+        this.user = user;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getMaximumEnergyConsumption() {
+        return maximumEnergyConsumption;
+    }
+
+    public void setMaximumEnergyConsumption(int maximumEnergyConsumption) {
+        this.maximumEnergyConsumption = maximumEnergyConsumption;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

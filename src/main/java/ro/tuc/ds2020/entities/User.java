@@ -1,24 +1,16 @@
 package ro.tuc.ds2020.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name = "user")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+
+
 
 public class User implements Serializable{
 
@@ -33,6 +25,11 @@ public class User implements Serializable{
     @Column(name = "username", nullable = false, unique = true)
     private String username;
 
+    public User(UUID id, String username, List<Device> devices) {
+        this.id = id;
+        this.username = username;
+        this.devices = devices;
+    }
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     @JsonIgnore
@@ -43,6 +40,30 @@ public class User implements Serializable{
         this.username = username;
         this.devices = devices;
     }
+public User(){
 
+}
+    public UUID getId() {
+        return id;
+    }
 
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public List<Device> getDevices() {
+        return devices;
+    }
+
+    public void setDevices(List<Device> devices) {
+        this.devices = devices;
+    }
 }
